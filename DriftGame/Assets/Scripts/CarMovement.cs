@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-
+using YG;
 
 public class CarMovement : MonoBehaviour
 {
@@ -57,10 +57,11 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private GameObject[] carPrefabs;
     private void Update()
     {
-        if(!PlayerPrefs.HasKey("record"))
+     if(YandexGame.savesData.record < score)
         {
-            PlayerPrefs.SetInt("record", score);
+            YandexGame.savesData.record = score;
         }
+            
         Debug.Log(PlayerPrefs.GetInt("record"));
     }
     private void Start()
@@ -98,34 +99,26 @@ public class CarMovement : MonoBehaviour
         driftAudioSource.Play();
 
 
-
-        if (PlayerPrefs.HasKey("carchoise"))
-        { 
-            if(PlayerPrefs.GetInt("carchoise") == 0)
+            if(YandexGame.savesData.carChoise == 0)
             {
                 carPrefabs[0].SetActive(true);
             }
-            else if (PlayerPrefs.GetInt("carchoise") == 1)
+            else if (YandexGame.savesData.carChoise == 1)
             {
                 carPrefabs[1].SetActive(true);
             }
-            else if (PlayerPrefs.GetInt("carchoise") == 2)
+            else if (YandexGame.savesData.carChoise == 2)
             {
                 carPrefabs[2].SetActive(true);
             }
-            else if (PlayerPrefs.GetInt("carchoise") == 3)
+            else if (YandexGame.savesData.carChoise == 3)
             {
                 carPrefabs[3].SetActive(true);
             }
-            else if (PlayerPrefs.GetInt("carchoise") == 4)
+            else if (YandexGame.savesData.carChoise == 4)
             {
                 carPrefabs[4].SetActive(true);
             }
-        }
-        else
-        {
-            carPrefabs[0].SetActive(true);
-        }
     }
 
     private void FixedUpdate()
@@ -267,14 +260,12 @@ public class CarMovement : MonoBehaviour
     {
         score += points;
         scorecount.text = score.ToString();
-        if (PlayerPrefs.HasKey("record"))
-        {
-            if (score > PlayerPrefs.GetInt("record"))
+
+            if (score > YandexGame.savesData.record)
             {
-                PlayerPrefs.SetInt("record", score);
-                PlayerPrefs.Save();
+                YandexGame.savesData.record = score;
+                YandexGame.SaveProgress();
             }
-        }
     }
 
     public void onPointerDownRaceButton()

@@ -12,9 +12,9 @@ public class RewardAdsManager : MonoBehaviour
     
     void Start()
     {
-        if(PlayerPrefs.HasKey("Money"))
+        if(YandexGame.savesData.money != 0)
         {
-            textMoney.text = "" + PlayerPrefs.GetInt("Money");
+            textMoney.text = "" + YandexGame.savesData.money;
         }
         else
         {
@@ -41,7 +41,7 @@ public class RewardAdsManager : MonoBehaviour
     public void UpdateMoney()
     {
         textMoney.text = "" + moneyCount;
-        PlayerPrefs.SetInt("Money", moneyCount);
-        PlayerPrefs.Save();
+        YandexGame.savesData.money = moneyCount;
+        YandexGame.SaveProgress();
     }
 }

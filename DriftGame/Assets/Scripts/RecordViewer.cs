@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class RecordViewer : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class RecordViewer : MonoBehaviour
 
     private void Start()
     {
-        if(!PlayerPrefs.HasKey("record"))
+        if(YandexGame.savesData.record == 0)
         {
             recordViewer.text = "У вас нет рекорда";
         }
         else
         {
-            recordViewer.text = PlayerPrefs.GetInt("record").ToString();
+            recordViewer.text = YandexGame.savesData.record.ToString();
         }
     }
 }

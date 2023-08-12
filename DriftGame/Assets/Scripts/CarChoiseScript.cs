@@ -29,12 +29,18 @@ public class CarChoiseScript : MonoBehaviour
     private void OnEnable() => YandexGame.GetDataEvent += GetLoad;
     private void OnDisable() => YandexGame.GetDataEvent -= GetLoad;
 
+    private void Update()
+    {
+        Debug.Log(showingInex);
+        Debug.Log(YandexGame.savesData.carChoise);
+    }
     private void Awake()
     {
-        if (YandexGame.savesData.carChoise >= null)
+        if (YandexGame.savesData.carChoise >= 1)
         {
-            cars[PlayerPrefs.GetInt("carchoise")].SetActive(true);
-            carallow[PlayerPrefs.GetInt("carchoise")] = true;
+            cars[YandexGame.savesData.carChoise].SetActive(true);
+            carallow[YandexGame.savesData.carChoise] = true;
+            showingInex = YandexGame.savesData.carChoise;   
         }
         else
         {
@@ -51,7 +57,7 @@ public class CarChoiseScript : MonoBehaviour
             GetLoad();
 
 
-        if (PlayerPrefs.HasKey("purchased1"))
+        if (YandexGame.savesData.purchased1 > 0)
         {
             purchased1 = true;
         }
@@ -59,7 +65,7 @@ public class CarChoiseScript : MonoBehaviour
         {
             purchased1 = false;
         }
-        if (PlayerPrefs.HasKey("purchased2"))
+        if (YandexGame.savesData.purchased2 > 0)
         {
             purchased2 = true;
         }
@@ -67,7 +73,7 @@ public class CarChoiseScript : MonoBehaviour
         {
             purchased2 = false;
         }
-        if (PlayerPrefs.HasKey("purchased3"))
+        if (YandexGame.savesData.purchased3 > 0)
         {
             purchased3 = true;
         }
@@ -75,7 +81,7 @@ public class CarChoiseScript : MonoBehaviour
         {
             purchased3 = false;
         }
-        if (PlayerPrefs.HasKey("purchased4"))
+        if (YandexGame.savesData.purchased4 > 0)
         {
             purchased4 = true;
         }
@@ -380,7 +386,8 @@ public class CarChoiseScript : MonoBehaviour
             carallow[0] = true;
 
             buttonText.text = "Выбрано";
-            PlayerPrefs.SetInt("carchoise", showingInex);
+            YandexGame.savesData.carChoise = showingInex;
+            YandexGame.SaveProgress();
         }
         else if (cars[1].activeSelf)
         {
@@ -393,7 +400,8 @@ public class CarChoiseScript : MonoBehaviour
                 carallow[0] = false;
 
                 buttonText.text = "Выбрано";
-                PlayerPrefs.SetInt("carchoise", showingInex);
+                YandexGame.savesData.carChoise = showingInex;
+                YandexGame.SaveProgress();
             }
         }
         else if (cars[2].activeSelf)
@@ -405,7 +413,8 @@ public class CarChoiseScript : MonoBehaviour
             carallow[0] = false;
 
             buttonText.text = "Выбрано";
-            PlayerPrefs.SetInt("carchoise", showingInex);
+            YandexGame.savesData.carChoise = showingInex;
+            YandexGame.SaveProgress();
         }
         else if (cars[3].activeSelf)
         {
@@ -416,7 +425,8 @@ public class CarChoiseScript : MonoBehaviour
             carallow[0] = false;
 
             buttonText.text = "Выбрано";
-            PlayerPrefs.SetInt("carchoise", showingInex);
+            YandexGame.savesData.carChoise = showingInex;
+            YandexGame.SaveProgress();
         }
         else if (cars[4].activeSelf)
         {
@@ -427,7 +437,8 @@ public class CarChoiseScript : MonoBehaviour
             carallow[0] = false;
 
             buttonText.text = "Выбрано";
-            PlayerPrefs.SetInt("carchoise", showingInex);
+            YandexGame.savesData.carChoise = showingInex;
+            YandexGame.SaveProgress();
         }
         
     }
@@ -444,7 +455,8 @@ public class CarChoiseScript : MonoBehaviour
             nomoney.SetActive(false);
             purchasedint1 = 1;
             carprice[1].SetActive(false);
-            PlayerPrefs.SetInt("purchased1", purchasedint1);
+            YandexGame.savesData.purchased1 = purchasedint1;
+            YandexGame.SaveProgress();
         }
         else if (cars[2].activeSelf && moneyinfo.moneyCount >= 600)
         {
@@ -456,7 +468,8 @@ public class CarChoiseScript : MonoBehaviour
             nomoney.SetActive(false);
             purchasedint2 = 1;
             carprice[2].SetActive(false);
-            PlayerPrefs.SetInt("purchased2", purchasedint2);
+            YandexGame.savesData.purchased2 = purchasedint2;
+            YandexGame.SaveProgress();
         }
         else if (cars[3].activeSelf && moneyinfo.moneyCount >= 800)
         {
@@ -468,7 +481,8 @@ public class CarChoiseScript : MonoBehaviour
             nomoney.SetActive(false);
             purchasedint3 = 1;
             carprice[3].SetActive(false);
-            PlayerPrefs.SetInt("purchased3", purchasedint3);
+            YandexGame.savesData.purchased3 = purchasedint3;
+            YandexGame.SaveProgress();
         }
         else if (cars[4].activeSelf && moneyinfo.moneyCount >= 1000)
         {
@@ -480,7 +494,8 @@ public class CarChoiseScript : MonoBehaviour
             nomoney.SetActive(false);
             purchasedint4 = 1;
             carprice[4].SetActive(false);
-            PlayerPrefs.SetInt("purchased4", purchasedint4);
+            YandexGame.savesData.purchased4 = purchasedint4;
+            YandexGame.SaveProgress();
         }
         else
         {
@@ -491,11 +506,12 @@ public class CarChoiseScript : MonoBehaviour
 
     public void Save()
     {
-        YandexGame.savesData.money = int.Parse(integerText.text);
-        YandexGame.savesData.newPlayerName = stringifyText.text.ToString();
-        for (int i = 0; i < booleanArrayToggle.Length; i++)
-            YandexGame.savesData.openLevels[i] = booleanArrayToggle[i].isOn;
+        YandexGame.savesData.purchased1 = purchasedint1;
+        YandexGame.savesData.purchased2 = purchasedint2;
+        YandexGame.savesData.purchased3 = purchasedint3;
+        YandexGame.savesData.purchased4 = purchasedint4;
 
+        YandexGame.savesData.carChoise = showingInex;
         YandexGame.SaveProgress();
     }
 
@@ -503,18 +519,14 @@ public class CarChoiseScript : MonoBehaviour
 
     public void GetLoad()
     {
-        integerText.text = string.Empty;
-        stringifyText.text = string.Empty;
 
-        integerText.placeholder.GetComponent<Text>().text = YandexGame.savesData.money.ToString();
-        stringifyText.placeholder.GetComponent<Text>().text = YandexGame.savesData.newPlayerName;
 
-        for (int i = 0; i < booleanArrayToggle.Length; i++)
-            booleanArrayToggle[i].isOn = YandexGame.savesData.openLevels[i];
 
-        systemSavesText.text = $"Language - {YandexGame.savesData.language}\n" +
-        $"First Session - {YandexGame.savesData.isFirstSession}\n" +
-        $"Prompt Done - {YandexGame.savesData.promptDone}\n";
+        purchasedint1=YandexGame.savesData.purchased1;
+        purchasedint2 = YandexGame.savesData.purchased2;
+        purchasedint3 = YandexGame.savesData.purchased3;
+        purchasedint4 = YandexGame.savesData.purchased4;
+        showingInex = YandexGame.savesData.carChoise;
     }
 
 }
