@@ -516,7 +516,7 @@ public class CarChoiseScript : MonoBehaviour
     {
 
 
-
+        moneyinfo.textMoney.text = YandexGame.savesData.money.ToString();
         purchasedint1=YandexGame.savesData.purchased1;
         purchasedint2 = YandexGame.savesData.purchased2;
         purchasedint3 = YandexGame.savesData.purchased3;

@@ -5,22 +5,16 @@ using YG;
 public class RewardAdsManager : MonoBehaviour
 {
     [SerializeField] int AdID;
-    [SerializeField] Text textMoney;
+    [SerializeField] public Text textMoney;
 
-    public int moneyCount = 0;
+    public int moneyCount;
 
+    public void Load() => YandexGame.LoadProgress();
 
     void Start()
     {
-
-        if (YandexGame.savesData.money != 0)
-        {
-            textMoney.text = "" + YandexGame.savesData.money;
-        }
-        else
-        {
-            AdMoney(0);
-        }
+        if (YandexGame.SDKEnabled)
+            GetLoad(); 
     }
     private void OnEnable() => YandexGame.CloseVideoEvent += Rewarded;
     private void OnDisable() => YandexGame.CloseVideoEvent -= Rewarded;
@@ -44,5 +38,11 @@ public class RewardAdsManager : MonoBehaviour
         textMoney.text = "" + moneyCount;
         YandexGame.savesData.money = moneyCount;
         YandexGame.SaveProgress();
+    }
+
+    public void GetLoad()
+    {
+        moneyCount = YandexGame.savesData.money;
+        textMoney.text = YandexGame.savesData.money.ToString();
     }
 }
