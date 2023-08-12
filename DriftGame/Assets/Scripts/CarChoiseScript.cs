@@ -29,11 +29,6 @@ public class CarChoiseScript : MonoBehaviour
     private void OnEnable() => YandexGame.GetDataEvent += GetLoad;
     private void OnDisable() => YandexGame.GetDataEvent -= GetLoad;
 
-    private void Update()
-    {
-        Debug.Log(showingInex);
-        Debug.Log(YandexGame.savesData.carChoise);
-    }
     private void Awake()
     {
         if (YandexGame.savesData.carChoise >= 1)
