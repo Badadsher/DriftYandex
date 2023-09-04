@@ -55,6 +55,26 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private Text scorecount;
 
     [SerializeField] private GameObject[] carPrefabs;
+
+
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            // Ограничение перемещения вверх и вниз
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            // Снятие ограничений при покидании границы
+            rb.constraints = RigidbodyConstraints.None;
+        }
+    }
     private void Update()
     {
      if(YandexGame.savesData.record < score)
@@ -172,7 +192,7 @@ public class CarMovement : MonoBehaviour
             }
         }
 
-        if (platform ==0)
+        if (platform == 0)
         {
             wasdimg.SetActive(true);
             moveInput = Input.GetAxis("Vertical");
