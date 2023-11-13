@@ -1,0 +1,19 @@
+{
+    "idSave": 36,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 200,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "carChoise": 0,
+    "record": 340,
+    "purchased1": 0,
+    "purchased2": 0,
+    "purchased3": 0,
+    "purchased4": 0
+}

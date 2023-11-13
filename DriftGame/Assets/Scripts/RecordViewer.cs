@@ -15,23 +15,35 @@ public class RecordViewer : MonoBehaviour
     private void Start()
     {
         if (YandexGame.SDKEnabled)
+        {
             GetLoad();
+        }
+           
 
 
-        if (Convert.ToInt32(recordViewer.text) == 0)
+      /*  if (Convert.ToInt32(recordViewer.text) == 0)
         {
             recordViewer.text = "У вас нет рекорда";
         }
         else
         {
             recordViewer.text = YandexGame.savesData.record.ToString();
-        }
+        }*/
+
+      
     }
 
     public void Load() => YandexGame.LoadProgress();
 
     public void GetLoad()
     {
-        recordViewer.text = YandexGame.savesData.record.ToString();
+        if (YandexGame.savesData.record != null || YandexGame.savesData.record != 0)
+        {
+            recordViewer.text = YandexGame.savesData.record.ToString();
+        }
+        else
+        {
+            recordViewer.text = "Нет рекорда";
+        }
     }
 }

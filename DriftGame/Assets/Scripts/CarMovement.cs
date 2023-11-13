@@ -80,6 +80,7 @@ public class CarMovement : MonoBehaviour
      if(YandexGame.savesData.record < score)
         {
             YandexGame.savesData.record = score;
+            YandexGame.SaveProgress();
         }
             
         Debug.Log(PlayerPrefs.GetInt("record"));

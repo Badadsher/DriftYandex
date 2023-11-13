@@ -1,0 +1,2 @@
+Build path: E:/UnityProjects/UnityProjects/DriftGameYD/DriftYandex/DriftGame/new
+Build number: 24
