@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 public class ResetBt : MonoBehaviour
 {
     [SerializeField] private GameObject loadermenuUI;
+    private int level;
+    private void Start()
+    {
+        level = SceneManager.GetActiveScene().buildIndex;
+    }
     public void ResetScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(level);
     }
 
     public void StartMenuON()
