@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 using YG;
 
 public class RewardAdsManager : MonoBehaviour
 {
     [SerializeField] int AdID;
     [SerializeField] public Text textMoney;
+    [SerializeField] private Button adButton;
 
     public int moneyCount;
 
@@ -14,10 +16,20 @@ public class RewardAdsManager : MonoBehaviour
     void Start()
     {
         if (YandexGame.SDKEnabled)
-            GetLoad(); 
+            GetLoad();
+
+        adButton.onClick.AddListener(delegate { clickReward(0); });
     }
-    private void OnEnable() => YandexGame.RewardVideoEvent += Rewarded;
+    private void OnEnable() {
+        YandexGame.RewardVideoEvent += Rewarded;    
+    }
+   
     private void OnDisable() => YandexGame.RewardVideoEvent -= Rewarded;
+
+    void clickReward(int id)
+    {
+        YandexGame.RewVideoShow(id);
+    }
 
     void Rewarded(int id)
     {

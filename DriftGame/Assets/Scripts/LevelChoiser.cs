@@ -5,19 +5,39 @@ using UnityEngine;
 public class LevelChoiser : MonoBehaviour
 {
     [SerializeField] private GameObject levelChoiseUI;
+    [SerializeField] private GameObject levelChoiseUIMOB;
     private Animator animator;
     private void Start()
     {
-        animator = levelChoiseUI.GetComponent<Animator>();
+        if (Application.isMobilePlatform == true)
+        {
+            animator = levelChoiseUIMOB.GetComponent<Animator>();
+        }
+        else
+        {
+            animator = levelChoiseUI.GetComponent<Animator>();
+        }
+      
     }
     public void StartChoise()
     {
-        levelChoiseUI.SetActive(true);     
+        if(Application.isMobilePlatform == true)
+        {
+            levelChoiseUIMOB.SetActive(true);
+        }
+        else
+        {
+            levelChoiseUI.SetActive(true);
+        }
+         
     }
 
     public void CloseChoise()
     {
-        animator.Play("closeChoiselevel");
+ 
+            animator.Play("closeChoiselevel");
+        
+        
     }
 }
 

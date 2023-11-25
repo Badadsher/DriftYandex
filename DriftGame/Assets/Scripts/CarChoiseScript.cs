@@ -11,6 +11,7 @@ public class CarChoiseScript : MonoBehaviour
     public RewardAdsManager moneyinfo;
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] carprice;
+    [SerializeField] private GameObject[] engineAnName;
     private int showingInex;
     [SerializeField] private GameObject choiseUI;
     [SerializeField] private Text buttonText;
@@ -35,7 +36,8 @@ public class CarChoiseScript : MonoBehaviour
         {
             cars[YandexGame.savesData.carChoise].SetActive(true);
             carallow[YandexGame.savesData.carChoise] = true;
-            showingInex = YandexGame.savesData.carChoise;   
+            showingInex = YandexGame.savesData.carChoise;
+            engineAnName[YandexGame.savesData.carChoise].SetActive(true);
         }
         else
         {
@@ -115,7 +117,8 @@ public class CarChoiseScript : MonoBehaviour
             cars[1].SetActive(true);
             showingInex = 1;
             carprice[1].SetActive(true);
-
+            engineAnName[0].SetActive(false);
+            engineAnName[1].SetActive(true);
             if (carallow[1] == true)
             {
                 buttonText.text = "Выбрано";
@@ -136,6 +139,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[1].activeSelf)
         {
+            engineAnName[1].SetActive(false);
+            engineAnName[2].SetActive(true);
             cars[1].SetActive(false);
             cars[2].SetActive(true);
             showingInex = 2;
@@ -169,6 +174,9 @@ public class CarChoiseScript : MonoBehaviour
             carprice[2].SetActive(false);
             carprice[3].SetActive(true);
 
+            engineAnName[2].SetActive(false);
+            engineAnName[3].SetActive(true);
+
             if (carallow[3] == true)
             {
                 buttonText.text = "Выбрано";
@@ -195,6 +203,9 @@ public class CarChoiseScript : MonoBehaviour
             showingInex = 4;
             carprice[3].SetActive(false);
             carprice[4].SetActive(true);
+
+            engineAnName[3].SetActive(false);
+            engineAnName[4].SetActive(true);
 
             if (carallow[4] == true)
             {
@@ -225,6 +236,9 @@ public class CarChoiseScript : MonoBehaviour
             showingInex = 0;
             carprice[4].SetActive(false);
 
+            engineAnName[4].SetActive(false);
+            engineAnName[0].SetActive(true);
+
             if (carallow[0] == true)
             {
                 buttonText.text = "Выбрано";
@@ -246,6 +260,9 @@ public class CarChoiseScript : MonoBehaviour
             cars[4].SetActive(true);
             showingInex = 4;
             carprice[4].SetActive(true);
+
+            engineAnName[0].SetActive(false);
+            engineAnName[4].SetActive(true);
 
             if (carallow[4] == true)
             {
@@ -277,6 +294,9 @@ public class CarChoiseScript : MonoBehaviour
             carprice[4].SetActive(false);
             carprice[3].SetActive(true);
 
+            engineAnName[4].SetActive(false);
+            engineAnName[3].SetActive(true);
+
             if (carallow[3] == true)
             {
                 buttonText.text = "Выбрано";
@@ -303,6 +323,9 @@ public class CarChoiseScript : MonoBehaviour
             showingInex = 2;
             carprice[3].SetActive(false);
             carprice[2].SetActive(true);
+
+            engineAnName[3].SetActive(false);
+            engineAnName[2].SetActive(true);
 
             if (carallow[2] == true)
             {
@@ -331,6 +354,9 @@ public class CarChoiseScript : MonoBehaviour
             carprice[2].SetActive(false);
             carprice[1].SetActive(true);
 
+            engineAnName[2].SetActive(false);
+            engineAnName[1].SetActive(true);
+
             if (carallow[1] == true)
             {
                 buttonText.text = "Выбрано";
@@ -355,6 +381,8 @@ public class CarChoiseScript : MonoBehaviour
             cars[0].SetActive(true);
             showingInex = 0;
             carprice[1].SetActive(false);
+            engineAnName[1].SetActive(false);
+            engineAnName[0].SetActive(true);
 
             if (carallow[0] == true)
             {
@@ -522,6 +550,7 @@ public class CarChoiseScript : MonoBehaviour
         purchasedint3 = YandexGame.savesData.purchased3;
         purchasedint4 = YandexGame.savesData.purchased4;
         showingInex = YandexGame.savesData.carChoise;
+
     }
 
 }
