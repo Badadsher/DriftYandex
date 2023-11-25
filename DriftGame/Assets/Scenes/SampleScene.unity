@@ -1433,9 +1433,9 @@ MonoBehaviour:
   braking: 1
   turnAngle: 28
   engineSound: {fileID: 8300000, guid: 42d22fede693bb647b7ed87a30825186, type: 3}
-  maxVolume: 0.09
-  minPitch: 0.8
-  maxPitch: 1.2
+  maxVolume: 0.02
+  minPitch: 1
+  maxPitch: 1.5
   frontLeftWheel: {fileID: 801000657}
   frontRightWheel: {fileID: 1823484942}
   rearLeftWheel: {fileID: 255632409}
