@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadScript : MonoBehaviour
 {
     [SerializeField] private GameObject startlevelUI;
+    [SerializeField] private int index;
     public void StartBT()
     {
         startlevelUI.SetActive(true);
@@ -13,6 +14,6 @@ public class LoadScript : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(index);
     }
 }

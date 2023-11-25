@@ -83,7 +83,7 @@ public class CarMovement : MonoBehaviour
             YandexGame.SaveProgress();
         }
             
-        Debug.Log(PlayerPrefs.GetInt("record"));
+ 
     }
     private void Start()
     {
