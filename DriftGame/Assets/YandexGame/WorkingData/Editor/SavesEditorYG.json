@@ -1,5 +1,5 @@
 {
-    "idSave": 282,
+    "idSave": 899,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -10,10 +10,10 @@
         true,
         false
     ],
-    "carChoise": 1,
-    "record": 2740,
+    "carChoise": 3,
+    "record": 8640,
     "purchased1": 1,
     "purchased2": 0,
-    "purchased3": 0,
-    "purchased4": 0
+    "purchased3": 1,
+    "purchased4": 1
 }

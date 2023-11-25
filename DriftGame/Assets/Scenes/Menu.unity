@@ -340,7 +340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0015335, y: 0.00021172}
+  m_AnchoredPosition: {x: -0.0015335, y: 26.63}
   m_SizeDelta: {x: 753.99, y: 141.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &94708310
@@ -377,7 +377,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0412\u0410\u041C \u0411\u0423\u0414\u0415\u0422 \u041F\u041E\u041A\u0410\u0417\u0410\u041D\u0410
-    \u0420\u0415\u041A\u041B\u0410\u041C\u0410\n\u041F\u0420\u041E\u0414\u041E\u041B\u0416\u0418\u0422\u042C?"
+    \u0420\u0415\u041A\u041B\u0410\u041C\u0410 \u0418 \u041D\u0410\u0427\u0418\u0421\u041B\u0415\u041D\u041E
+    100 \u041C\u041E\u041D\u0415\u0422\u041E\u041A\n\u0421\u041E\u0413\u041B\u0410\u0421\u041D\u042B?"
 --- !u!222 &94708311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3708,7 +3709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3717,11 +3718,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: ce77b55f20670be4b89db071299ff5e6, type: 3}
-    m_FontSize: 38
+    m_FontSize: 69
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 6
+    m_MaxSize: 69
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
