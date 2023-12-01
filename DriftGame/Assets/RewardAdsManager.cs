@@ -11,6 +11,11 @@ public class RewardAdsManager : MonoBehaviour
 
     public void Load() => YandexGame.LoadProgress();
 
+    private void Update()
+    {
+        Debug.Log(moneyCount);
+    }
+
     void Start()
     {
         if (YandexGame.SDKEnabled)
@@ -45,7 +50,7 @@ public class RewardAdsManager : MonoBehaviour
        
         moneyCount = YandexGame.savesData.money;
 
-        if(YandexGame.savesData.money != null || YandexGame.savesData.money != 0)
+        if( YandexGame.savesData.money != 0)
         {
             textMoney.text = YandexGame.savesData.money.ToString();
         }

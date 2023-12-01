@@ -238,14 +238,14 @@ public class CarMovement : MonoBehaviour
             if (turnInput == 1 && currentSpeed >= 15f  || turnInput >= 0.8 && currentSpeed >= 15f)
             {
                 AddScore(10);
-                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, 0.3f, Time.deltaTime * acceleration);
+                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, 0.1f, Time.deltaTime * acceleration);
 
               
             }
             else if (turnInput == -1 && currentSpeed >= 15f || turnInput <= -0.8 && currentSpeed >= 15f)
             {
                 AddScore(10);
-                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, 0.3f, Time.deltaTime * acceleration);
+                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, 0.1f, Time.deltaTime * acceleration);
                
             }
             else

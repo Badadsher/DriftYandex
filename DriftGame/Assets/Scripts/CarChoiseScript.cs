@@ -11,6 +11,7 @@ public class CarChoiseScript : MonoBehaviour
     public RewardAdsManager moneyinfo;
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] carprice;
+    [SerializeField] private GameObject[] carinfo;
     private int showingInex;
     [SerializeField] private GameObject choiseUI;
     [SerializeField] private Text buttonText;
@@ -35,7 +36,8 @@ public class CarChoiseScript : MonoBehaviour
         {
             cars[YandexGame.savesData.carChoise].SetActive(true);
             carallow[YandexGame.savesData.carChoise] = true;
-            showingInex = YandexGame.savesData.carChoise;   
+            showingInex = YandexGame.savesData.carChoise;
+            carinfo[YandexGame.savesData.carChoise].SetActive(true) ;
         }
         else
         {
@@ -111,6 +113,8 @@ public class CarChoiseScript : MonoBehaviour
     {
         if (cars[0].activeSelf)
         {
+            carinfo[0].SetActive(false);
+            carinfo[1].SetActive(true);
             cars[0].SetActive(false);
             cars[1].SetActive(true);
             showingInex = 1;
@@ -136,6 +140,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[1].activeSelf)
         {
+            carinfo[1].SetActive(false);
+            carinfo[2].SetActive(true);
             cars[1].SetActive(false);
             cars[2].SetActive(true);
             showingInex = 2;
@@ -163,6 +169,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[2].activeSelf)
         {
+            carinfo[2].SetActive(false);
+            carinfo[3].SetActive(true);
             cars[2].SetActive(false);
             cars[3].SetActive(true);
             showingInex = 3;
@@ -190,6 +198,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[3].activeSelf)
         {
+            carinfo[3].SetActive(false);
+            carinfo[4].SetActive(true);
             cars[3].SetActive(false);
             cars[4].SetActive(true);
             showingInex = 4;
@@ -220,6 +230,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[4].activeSelf)
         {
+            carinfo[4].SetActive(false);
+            carinfo[0].SetActive(true);
             cars[4].SetActive(false);
             cars[0].SetActive(true);
             showingInex = 0;
@@ -242,6 +254,8 @@ public class CarChoiseScript : MonoBehaviour
     {
         if (cars[0].activeSelf)
         {
+            carinfo[0].SetActive(false);
+            carinfo[4].SetActive(true);
             cars[0].SetActive(false);
             cars[4].SetActive(true);
             showingInex = 4;
@@ -271,6 +285,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[4].activeSelf)
         {
+            carinfo[4].SetActive(false);
+            carinfo[3].SetActive(true);
             cars[4].SetActive(false);
             cars[3].SetActive(true);
             showingInex = 3;
@@ -298,6 +314,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[3].activeSelf)
         {
+            carinfo[3].SetActive(false);
+            carinfo[2].SetActive(true);
             cars[3].SetActive(false);
             cars[2].SetActive(true);
             showingInex = 2;
@@ -325,6 +343,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[2].activeSelf)
         {
+            carinfo[2].SetActive(false);
+            carinfo[1].SetActive(true);
             cars[2].SetActive(false);
             cars[1].SetActive(true);
             showingInex = 1;
@@ -351,6 +371,8 @@ public class CarChoiseScript : MonoBehaviour
         }
         else if (cars[1].activeSelf)
         {
+            carinfo[1].SetActive(false);
+            carinfo[0].SetActive(true);
             cars[1].SetActive(false);
             cars[0].SetActive(true);
             showingInex = 0;
