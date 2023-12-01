@@ -5,8 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using YG;
-using Cinemachine;
-using UnityEngine.SceneManagement;
 
 public class CarMovement : MonoBehaviour
 {
@@ -58,7 +56,7 @@ public class CarMovement : MonoBehaviour
 
     [SerializeField] private GameObject[] carPrefabs;
 
-    [SerializeField]  private CinemachineVirtualCamera virtualCamera;
+
 
     private void OnCollisionStay(Collision collision)
     {
@@ -94,22 +92,11 @@ public class CarMovement : MonoBehaviour
         {
             platform = 1;
             Debug.Log("MOBILE");
-
-            if(SceneManager.GetActiveScene().buildIndex != 0)
-            {
-                CinemachineFramingTransposer framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-                if (framingTransposer != null)
-                {
-                    framingTransposer.m_SoftZoneWidth = 0;
-                }
-                virtualCamera.m_Lens.OrthographicSize = 11f;
-            }
-
         }
         else
         {
             platform = 0;
-            Debug.Log("PC");     
+            Debug.Log("PC");
         }
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0f, -0.5f, 0f); // Смещение центра масс для более реалистичной физики
@@ -140,85 +127,31 @@ public class CarMovement : MonoBehaviour
             else if (YandexGame.savesData.carChoise == 1)
             {
                 carPrefabs[1].SetActive(true);
-            acceleration = 35f;
             }
             else if (YandexGame.savesData.carChoise == 2)
             {
                 carPrefabs[2].SetActive(true);
-            acceleration = 40f;
-        }
+            }
             else if (YandexGame.savesData.carChoise == 3)
             {
                 carPrefabs[3].SetActive(true);
-            acceleration = 45f;
-        }
+            }
             else if (YandexGame.savesData.carChoise == 4)
             {
                 carPrefabs[4].SetActive(true);
-            acceleration = 50f;
-        }
+            }
     }
 
     private void FixedUpdate()
     {
-        
         if(platform == 1)
         {
-            joystick.gameObject.SetActive(true);
-            moveInput = joystick.Vertical;
-            turnInput = joystick.Horizontal;
-
-            if (moveInput > 0)
-            {
-                currentSpeed += acceleration * Time.deltaTime;
-                currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
-
-                // Включаем звук мотора
-                engineAudioSource.volume = Mathf.Lerp(engineAudioSource.volume, maxVolume, Time.deltaTime * acceleration);
-                engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, maxPitch, Time.deltaTime * acceleration);
-                isMoving = true;
-            }
-            else if (moveInput < 0)
-            {
-                currentSpeed = Mathf.Lerp(currentSpeed, -maxSpeed / 2f, braking * Time.deltaTime);
-
-                // Уменьшаем звук мотора при торможении
-                engineAudioSource.volume = Mathf.Lerp(engineAudioSource.volume, 0f, Time.deltaTime * braking);
-                engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, minPitch, Time.deltaTime * braking);
-                isMoving = true;
-            }
-            else
-            {
-                currentSpeed = Mathf.Lerp(currentSpeed, 0f, braking * Time.deltaTime);
-
-                // При отсутствии движения постепенно выключаем звук мотора
-                if (isMoving)
-                {
-                    engineAudioSource.volume = Mathf.Lerp(engineAudioSource.volume, 0f, Time.deltaTime * braking);
-                    engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, minPitch, Time.deltaTime * braking);
-                }
-            }
-
-            // Добавляем условия для управления дрифтом с сенсорным джойстиком
-            if (Mathf.Abs(turnInput) >= 0.8f && currentSpeed >= 15f)
-            {
-                if (turnInput > 0)
-                {
-                    AddScore(10);
-                    driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, maxVolume, Time.deltaTime * acceleration);
-                }
-                else if (turnInput < 0)
-                {
-                    AddScore(10);
-                    driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, maxVolume, Time.deltaTime * acceleration);
-                }
-            }
-            else
-            {
-                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, 0f, Time.deltaTime * braking);
-            }
+            float turnInput = joystick.Horizontal;
         }
-      
+        else 
+        {
+           float turnInput = Input.GetAxis("Horizontal");
+        }
         if (isRacePressed)
         {
             currentSpeed += acceleration * Time.deltaTime;
@@ -305,14 +238,14 @@ public class CarMovement : MonoBehaviour
             if (turnInput == 1 && currentSpeed >= 15f  || turnInput >= 0.8 && currentSpeed >= 15f)
             {
                 AddScore(10);
-                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, maxVolume, Time.deltaTime * acceleration);
+                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, 0.3f, Time.deltaTime * acceleration);
 
               
             }
             else if (turnInput == -1 && currentSpeed >= 15f || turnInput <= -0.8 && currentSpeed >= 15f)
             {
                 AddScore(10);
-                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, maxVolume, Time.deltaTime * acceleration);
+                driftAudioSource.volume = Mathf.Lerp(driftAudioSource.volume, 0.3f, Time.deltaTime * acceleration);
                
             }
             else
