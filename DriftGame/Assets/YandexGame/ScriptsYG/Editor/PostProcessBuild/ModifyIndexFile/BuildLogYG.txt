@@ -1,2 +1,2 @@
-Build path: E:/UnityProjects/UnityProjects/DriftGameYD/DriftYandex/DriftGame/popitka2
-Build number: 27
+Build path: E:/UnityProjects/UnityProjects/DriftGameYD/DriftYandex/DriftGame/new
+Build number: 34

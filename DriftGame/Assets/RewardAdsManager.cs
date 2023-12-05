@@ -9,17 +9,30 @@ public class RewardAdsManager : MonoBehaviour
 
     public int moneyCount;
 
+
     public void Load() => YandexGame.LoadProgress();
 
     private void Update()
     {
-        Debug.Log(moneyCount);
+      
+        moneyCount = YandexGame.savesData.money;
+        textMoney.text = moneyCount.ToString();
     }
 
     void Start()
     {
+      
         if (YandexGame.SDKEnabled)
-            GetLoad(); 
+        {
+            GetLoad();
+        }
+
+        else
+        {
+            Debug.Log("error");
+        }
+
+       
     }
     private void OnEnable() => YandexGame.RewardVideoEvent += Rewarded;
     private void OnDisable() => YandexGame.RewardVideoEvent -= Rewarded;
@@ -47,8 +60,8 @@ public class RewardAdsManager : MonoBehaviour
 
     public void GetLoad()
     {
+        Debug.Log("countdone");
        
-        moneyCount = YandexGame.savesData.money;
 
         if( YandexGame.savesData.money != 0)
         {

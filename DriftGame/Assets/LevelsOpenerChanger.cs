@@ -15,12 +15,12 @@ public class LevelsOpenerChanger : MonoBehaviour
     {
         score = YandexGame.savesData.record;
 
-       if(score >= 500 && score < 800)
+       if(score >= 5000 && score < 10000)
         {
             closedLevelTwo.SetActive(false);
             openedLevelTwo.SetActive(true);
         }
-       else if(score > 800)
+       else if(score >= 10000)
         {
             closedLevelTwo.SetActive(false);
             openedLevelTwo.SetActive(true);

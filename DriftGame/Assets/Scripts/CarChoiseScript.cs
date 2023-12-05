@@ -8,6 +8,7 @@ using YG;
 public class CarChoiseScript : MonoBehaviour
 {
     public bool[] carallow;
+    private int money;
     public RewardAdsManager moneyinfo;
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] carprice;
@@ -30,8 +31,13 @@ public class CarChoiseScript : MonoBehaviour
     private void OnEnable() => YandexGame.GetDataEvent += GetLoad;
     private void OnDisable() => YandexGame.GetDataEvent -= GetLoad;
 
+    private void Update()
+    {
+        money = moneyinfo.moneyCount;
+    }
     private void Awake()
     {
+     
         if (YandexGame.savesData.carChoise >= 1)
         {
             cars[YandexGame.savesData.carChoise].SetActive(true);
@@ -462,9 +468,10 @@ public class CarChoiseScript : MonoBehaviour
 
     public void BuyCar()
     {
-        if(cars[1].activeSelf && moneyinfo.moneyCount >= 200 )
+        if(cars[1].activeSelf && money >= 200 )
         {
-            moneyinfo.moneyCount -= 200;
+            moneyinfo.moneyCount-= 200;
+            YandexGame.savesData.money = money;
             moneyinfo.UpdateMoney();
             purchased1 = true;
             buybt.SetActive(false);
@@ -475,9 +482,10 @@ public class CarChoiseScript : MonoBehaviour
             YandexGame.savesData.purchased1 = purchasedint1;
             YandexGame.SaveProgress();
         }
-        else if (cars[2].activeSelf && moneyinfo.moneyCount >= 600)
+        else if (cars[2].activeSelf && money >= 600)
         {
             moneyinfo.moneyCount -= 600;
+            YandexGame.savesData.money = money;
             moneyinfo.UpdateMoney();
             purchased2 = true;
             buybt.SetActive(false);
@@ -488,9 +496,10 @@ public class CarChoiseScript : MonoBehaviour
             YandexGame.savesData.purchased2 = purchasedint2;
             YandexGame.SaveProgress();
         }
-        else if (cars[3].activeSelf && moneyinfo.moneyCount >= 800)
+        else if (cars[3].activeSelf && money >= 800)
         {
             moneyinfo.moneyCount -= 800;
+            YandexGame.savesData.money = money;
             moneyinfo.UpdateMoney();
             purchased3 = true;
             buybt.SetActive(false);
@@ -501,9 +510,10 @@ public class CarChoiseScript : MonoBehaviour
             YandexGame.savesData.purchased3 = purchasedint3;
             YandexGame.SaveProgress();
         }
-        else if (cars[4].activeSelf && moneyinfo.moneyCount >= 1000)
+        else if (cars[4].activeSelf && money >= 1000)
         {
             moneyinfo.moneyCount -= 1000;
+            YandexGame.savesData.money = money;
             moneyinfo.UpdateMoney();
             purchased4 = true;
             buybt.SetActive(false);
@@ -538,7 +548,7 @@ public class CarChoiseScript : MonoBehaviour
     {
 
 
-        moneyinfo.textMoney.text = YandexGame.savesData.money.ToString();
+      //  moneyinfo.textMoney.text = YandexGame.savesData.money.ToString();
         purchasedint1=YandexGame.savesData.purchased1;
         purchasedint2 = YandexGame.savesData.purchased2;
         purchasedint3 = YandexGame.savesData.purchased3;
